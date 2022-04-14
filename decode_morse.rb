@@ -45,22 +45,17 @@ end
 def decode_word(param1)
   param = param1
   text = ''
-  param.split.each do |letter|
-    text += decode_char(letter)
-  end
+  param.split.each { |letter| text << decode_char(letter) } 
   text
 end
 
 def decode(param2)
   param1 = param2
   text = ''
-  param1.split('   ').each do |word|
-    text += decode_word(word)
-    text += ' '
-  end
-  puts text
+  param1.split('   ').each { |word| text << "#{decode_word(word)} " }
+   text
 end
 
-decode('-- -.--   -. .- -- .')
+puts decode('-- -.--   -. .- -- .')
 
-decode('.-   -... --- -..-   ..-. ..- .-.. .-..   --- ..-.   .-. ..- -... .. . ...')
+puts decode('.-   -... --- -..-   ..-. ..- .-.. .-..   --- ..-.   .-. ..- -... .. . ...')
